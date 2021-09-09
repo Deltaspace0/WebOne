@@ -158,6 +158,7 @@
             width: 100%;
             text-align: center;
             border-collapse: collapse;
+            border-radius: 8px;
         }
 
         #result-table tr {
@@ -195,6 +196,19 @@
 
         .right-aligned {
             float: right;
+        }
+
+        .x-radio:checked {
+            filter: hue-rotate(180deg);
+        }
+
+        .r-radio:checked {
+            filter: hue-rotate(90deg);
+        }
+
+        .y-text:focus {
+            border-color: #ff3ddf;
+            outline-style: none;
         }
     </style>
 </head>
@@ -281,7 +295,7 @@
                                 <label for="y-textinput">Y:</label>
                             </td>
                             <td class="input-grid-value">
-                                <input id="y-textinput" type="text" name="y-value" maxlength="10" autocomplete="on" placeholder="Нужно число в пределах от -3 до 5...">
+                                <input class="y-text" id="y-textinput" type="text" name="y-value" maxlength="10" autocomplete="on" placeholder="Нужно число в пределах от -3 до 5...">
                             </td>
                         </tr>
                         <tr>
