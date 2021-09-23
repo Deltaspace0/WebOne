@@ -48,7 +48,11 @@ function validateY() {
 const resultTableOriginalHTML = document.getElementById('result-table').innerHTML;
 document.querySelectorAll('input[value="Всё удалить"]')[0].addEventListener('click', function() {
     document.getElementById('result-table').innerHTML = resultTableOriginalHTML;
+    localStorage.clear();
 });
+for (let i = 0; i < localStorage.length; i++) {
+    $('#result-table').append(localStorage.getItem(i));
+}
 
 $('#input-form').on('submit', function (event) {
     event.preventDefault();
@@ -70,7 +74,9 @@ $('#input-form').on('submit', function (event) {
             if (!data.success) {
                 return;
             }
-            $('#result-table').append(`<tr><td>${data.currentTime}</td><td>${data.executionTime}</td><td>${data.xValue}</td><td>${data.yValue}</td><td>${data.rValue}</td><td>${data.hit ? "Есть" : "Нет"}</td></tr>`);
+            const t = `<tr><td>${data.currentTime}</td><td>${data.executionTime}</td><td>${data.xValue}</td><td>${data.yValue}</td><td>${data.rValue}</td><td>${data.hit ? "Есть" : "Нет"}</td></tr>`;
+            $('#result-table').append(t);
+            localStorage.setItem(localStorage.length, t);
         }
     });
 });
